@@ -1,59 +1,83 @@
-# SimpleTaskManagerFrontend
+# Simple Task Manager - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+A modern, production-grade single-page application (SPA) built with Angular and Angular Material, designed to interface seamlessly with a Spring Boot backend.
 
-## Development server
+## Key Features
 
-To start a local development server, run:
+- Modern Angular Architecture: Built using Angular Standalone Components.
+- Reactive Forms & Validation: Robust client-side validation with real-time feedback for task titles (required, max length 255) and descriptions.
+- Angular Material Design: Clean, accessible SaaS dashboard styling featuring custom elevation, crisp typography, and an interactive data table.
+- Asynchronous UX: Integrated loading overlays and progress indicators to handle network latency gracefully during API calls.
+- Pagination & Backlog: Server-side pagination support with dynamic page sizing and responsive layout.
+- Unified Build Pipeline: Integrated directly into the Spring Boot Gradle build for single-JAR production distribution.
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech Stack
 
-## Code scaffolding
+- Framework: Angular (TypeScript)
+- UI Library: Angular Material
+- Styling: SCSS, Flexbox / CSS Grid
+- HTTP Client: Angular HttpClient
+- Build Tool: Angular CLI / Vite
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Project Structure
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+src/
+├── app/
+│   ├── components/
+│   │   ├── task-form/       # Task creation reactive form component
+│   │   └── task-list/       # Data table, pagination, and loading overlay
+│   ├── models/
+│   │   └── task.model.ts    # TypeScript interfaces (TaskRequest, TaskResponse, PagedResponse)
+│   ├── services/
+│   │   └── task.service.ts  # HTTP client service communicating with Spring Boot REST API
+│   ├── app.config.ts        # Global application providers (Router, HttpClient, Animations)
+│   ├── app.routes.ts        # Client-side route definitions
+│   ├── app.ts               # Root component shell
+│   └── app.html             # Main layout template (Toolbar & Content View)
+├── main.ts                  # Application bootstrap entry point
+└── styles.scss              # Global styles and Material overrides
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Getting Started & Local Development
 
-To build the project run:
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm
 
-```bash
-ng build
-```
+### Installation & Execution
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. Clone the repository:
+   git clone https://github.com/mukeshkrishnan666/simple-task-manager-frontend.git
+   cd simple-task-manager-frontend
 
-## Running unit tests
+2. Install dependencies:
+   npm install
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+3. Start the development server:
+   ng serve
 
-```bash
-ng test
-```
+4. Access the application:
+   Open your browser and navigate to http://localhost:4200 (Ensure your Spring Boot backend is running on port 8080 for API communication).
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Production Build
 
-```bash
-ng e2e
-```
+To compile the production-ready static assets manually:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+npm run build
 
-## Additional Resources
+The optimized output will be generated under dist/simple-task-manager-frontend/browser/. 
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+(Note: In the full-stack repository setup, the backend's Gradle script automatically triggers this build and packages the assets directly into the Spring Boot executable JAR).
+
+---
+
+## License
+
+This project is open-source and available under the MIT License.
